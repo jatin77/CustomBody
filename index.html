@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Customize Page</title>
+</head>
+
+<body>
+
+  <!---------------Front-wrapper--------------->
+  <div class="container">
+    <div class="place-welcome">
+      <div class="hello-text">
+        <h1>Life is a Journey</h1>
+        <h3>Welcome to paradise</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, assumenda. Itaque sunt deserunt obcaecati,
+          mollitia dolores officia aliquid hic provident nostrum quod, enim, autem minima expedita facilis ullam
+          molestias natus.</p>
+      </div>
+    </div>
+    <div class="place-image">
+      <img src="michael-baron-472371-unsplash.jpg" alt="">
+    </div>
+    <div class="nav">
+
+    </div>
+  </div>
+  <!-------------------Menu-wrapper------------->
+  <div class="menu-container">
+    <div class="menu-img">
+      <img src="jake-melara-30681-unsplash.jpg" alt="">
+    </div>
+    <div class="menu-items">
+      <ul>
+        <li><a href="#">Goa</a></li>
+        <li><a href="#">Kasol</a></li>
+        <li><a href="#">Parvati Valley</a></li>
+        <li><a href="#">Ladakh</a></li>
+        <li><a href="#">Jaipur</a></li>
+      </ul>
+    </div>
+  </div>
+  <!------------------Custom-styles----------------->
+  <div class="custom-container">
+    <h2>Customize</h2>
+    <label for="h1">Head Text</label>
+    <input type="text" id="h1">
+    <label for="h3">Tagline</label>
+    <input type="text" id="h3">
+    <label for="p">Description</label>
+    <input type="text" id="p">
+
+    <input type="button" value="Add Text" id="add">
+    <h3>Select Background Color</h3>
+    <div class="colors">
+      <div id="linear-gradient(to right, #4776e6, #8e54e9)"></div>
+      <div id="linear-gradient(to right, #24c6dc, #514a9d)"></div>
+      <div id="linear-gradient(to right, #232526, #414345)"></div>
+      <div id="linear-gradient(to right, #aa076b, #61045f)"></div>
+      <div id="linear-gradient(to right, #02aab0, #00cdac)"></div>
+      <div id="linear-gradient(to right, #ec008c, #fc6767)"></div>
+    </div>
+    <h3>Select Image</h3>
+    <div class="images">
+      <img src="michael-baron-472371-unsplash.jpg" alt="">
+      <img src="pioneer-gear-256803-unsplash.jpg" alt="">
+      <img src="sander-crombach-972633-unsplash (1).jpg" alt="">
+      <img src="zach-betten-40138-unsplash.jpg" alt="">
+      <img src="jake-melara-30681-unsplash.jpg" alt="">
+    </div>
+    <div class="custom-toggle">
+
+    </div>
+  </div>
+  <!---------------------SCRIPT------------------->
+  <script>
+    //FUNCTIONS
+    function showMenu() {
+      var menuContainer = document.querySelector(".menu-container");
+      var navBg = document.querySelector(".nav");
+      menuContainer.classList.toggle("active");
+      navBg.classList.toggle("active");
+    }
+
+    function customize() {
+      //TEXT
+      var headInput = document.getElementById("h1").value;
+      var taglineInput = document.getElementById("h3").value;
+      var descriptionInput = document.getElementById("p").value;
+      var head = document.querySelector(".hello-text h1");
+      var tagline = document.querySelector(".hello-text h3");
+      var description = document.querySelector(".hello-text p");
+
+      if (headInput) {
+        head.textContent = headInput;
+
+      }
+      if (taglineInput) {
+        tagline.textContent = taglineInput;
+      }
+      if (descriptionInput) {
+        description.textContent = descriptionInput;
+      }
+    }
+    //Change BackgroundColor
+    function changeBgColor() {
+      var menuBg = document.querySelector(".menu-container");
+      colors.forEach(color => color.style.border = "");
+      var id = this.id;
+      this.style.border = "2px solid #1a1a1a";
+      menuBg.style.background = id;
+      document.body.style.background = id;
+    }
+    //Change BackgroundImage
+    function changeBgImg() {
+      images.forEach(img => img.style.border = "")
+      var srcImg = this.src;
+      this.style.border = "2px solid #1a1a1a";
+      var mainImgSrc = document.querySelector(".place-image img");
+      mainImgSrc.setAttribute("src", srcImg);
+
+    }
+    //Show Hide Custom Menu
+    function showHideCustomMenu() {
+      var customContainer = document.querySelector(".custom-container");
+      var customToggle = document.querySelector(".custom-toggle");
+      customToggle.classList.toggle("active");
+      customContainer.classList.toggle("active");
+    }
+    //EVENTS
+    //showHide Menu
+    document.querySelector(".nav").addEventListener("click", showMenu);
+    //showhide custom bar
+    document.querySelector(".custom-toggle").addEventListener("click", showHideCustomMenu)
+    //text
+    document.querySelector("#add").addEventListener("click", customize);
+    //background Color
+    var colors = document.querySelectorAll(".colors div");
+    for (var i = 0; i < colors.length; i++) {
+
+      colors[i].addEventListener("click", changeBgColor);
+
+    }
+    //image
+    var images = document.querySelectorAll(".images img");
+    for (var i = 0; i < images.length; i++) {
+      images[i].addEventListener("click", changeBgImg);
+
+    }
+  </script>
+</body>
+
+</html>
